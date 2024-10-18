@@ -1,9 +1,116 @@
-body {
-   color: black;
-   font-family:sans-serif;
+/* Modern color scheme and variables */
+:root {
+  --primary: #2d3436;
+  --accent: #0984e3;
+  --background: #f5f6fa;
+  --text: #2d3436;
+  --hover: #74b9ff;
+  --shadow: rgba(0, 0, 0, 0.1);
 }
 
-h1{
-   text-align: center;
-   margin-bottom: 2em;
+/* Base styles and animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes borderPulse {
+  0% { border-color: var(--accent); }
+  50% { border-color: var(--hover); }
+  100% { border-color: var(--accent); }
+}
+
+/* Core styles */
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: var(--background);
+  color: var(--text);
+  animation: fadeIn 1s ease-out;
+}
+
+/* Header styles */
+h1, h2 {
+  color: var(--primary);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  animation: borderPulse 4s infinite;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-top: 3rem;
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Link styles */
+a {
+  color: var(--accent);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin: 0.5rem 0;
+  display: inline-block;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  background: white;
+  box-shadow: 0 2px 10px var(--shadow);
+}
+
+a:hover {
+  color: white;
+  background: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+/* Link container */
+p {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  a {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* Print styles */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  
+  a {
+    box-shadow: none;
+    border: 1px solid var(--accent);
+  }
 }
